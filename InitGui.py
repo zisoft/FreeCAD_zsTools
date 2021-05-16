@@ -65,7 +65,8 @@ class zsToolsWorkbench(Workbench):
         FreeCAD.Console.PrintMessage("zsTools WorkBench initializing...")
         FreeCADGui.updateGui()
 
-        import makeSpreadsheetCmd  # creates the parts list
+        import makeSpreadsheetCmd   # creates the parts list spreadsheet
+        import partInfoCmd          # creates the partInfo attribute group
 
 
         # Define Menus
@@ -85,12 +86,14 @@ class zsToolsWorkbench(Workbench):
     """
     def zsToolsMenuItems(self):
         commandList = [ 
+            "zsTools_partInfo",
             "zsTools_makeSpreadsheet"
         ]
         return commandList
         
     def zsToolsToolbarItems(self):
         commandList = [ 
+            "zsTools_partInfo",
             "zsTools_makeSpreadsheet"
         ]
         return commandList

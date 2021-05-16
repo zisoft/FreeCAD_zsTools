@@ -19,3 +19,7 @@ datumTypes = [  'PartDesign::CoordinateSystem', \
 
 
 containerTypes = [ 'App::Part', 'PartDesign::Body' ]
+
+# Part Infos
+partInfo = [ 'Material', \
+             'Description' ]
