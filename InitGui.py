@@ -32,9 +32,7 @@ zsTools_icon = os.path.join( zsToolspath , 'Resources/icons/FreeCAD.svg' )
 
 
 """
-    +-----------------------------------------------+
-    |            Initialize the workbench           |
-    +-----------------------------------------------+
+    Initialize the workbench
 """
 class zsToolsWorkbench(Workbench):
 
@@ -62,11 +60,7 @@ class zsToolsWorkbench(Workbench):
         # this function is mandatory if this is a full python workbench
         return "Gui::PythonWorkbench"
 
-        """
-    +-----------------------------------------------+
-    |        This is where all is defined           |
-    +-----------------------------------------------+
-        """
+
     def Initialize(self):
         FreeCAD.Console.PrintMessage("zsTools WorkBench initializing...")
         FreeCADGui.updateGui()
@@ -75,29 +69,19 @@ class zsToolsWorkbench(Workbench):
 
 
         # Define Menus
-        # commands to appear in the Assembly4 menu 'Assembly'
+        # commands to appear in the menu 'zsTools'
         self.appendMenu( "&zsTools", self.zsToolsMenuItems() )
 
-        # additional entry in the Help menu
-        # self.appendMenu("&Help", ["zsToolsHelp"])
-
         # Define Toolbars
-        # commands to appear in the Assembly4 toolbar
+        # commands to appear in the toolbar
         self.appendToolbar( "zsTools", self.zsToolsToolbarItems() )
 
         FreeCAD.Console.PrintMessage(" done.\n")
-        """
-    +-----------------------------------------------+
-    |           Initialisation finished             |
-    +-----------------------------------------------+
-        """
 
 
 
     """
-    +-----------------------------------------------+
-    |            zsTools Menu & Toolbar             |
-    +-----------------------------------------------+
+        zsTools Menu & Toolbar
     """
     def zsToolsMenuItems(self):
         commandList = [ 
@@ -115,9 +99,7 @@ class zsToolsWorkbench(Workbench):
 
     
 """
-    +-----------------------------------------------+
-    |          actually make the workbench          |
-    +-----------------------------------------------+
+    make the workbench
 """
 wb = zsToolsWorkbench()
 Gui.addWorkbench(wb)
