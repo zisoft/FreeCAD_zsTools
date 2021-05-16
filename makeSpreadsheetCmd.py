@@ -67,6 +67,12 @@ class makeSpreadsheet:
             self.sheet.set('E' + sRowNum, str(Xsize))
             self.sheet.set('F' + sRowNum, str(Ysize))
             self.sheet.set('G' + sRowNum, str(Zsize))
+
+            if hasattr(obj,'Material') and obj.getGroupOfProperty('Material') == 'PartInfo':
+                self.sheet.set('H' + sRowNum, obj.getPropertyByName('Material'))
+                
+            if hasattr(obj,'Description') and obj.getGroupOfProperty('Description') == 'PartInfo':
+                self.sheet.set('I' + sRowNum, obj.getPropertyByName('Description'))
                 
 
             rowNum += 1
