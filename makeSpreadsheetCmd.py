@@ -37,7 +37,7 @@ class makeSpreadsheet:
 
         # ---------------------------------------------------------------------------
         # Create the Spreadsheet
-        self.sheet = App.ActiveDocument.addObject("Spreadsheet::Sheet", "PartsList")
+        self.sheet = self.doc.addObject("Spreadsheet::Sheet", "PartsList")
         self.sheet.Label = "PartsList"
         self.sheet.set('A1', 'Pos')
         self.sheet.set('B1', 'Count')
@@ -76,7 +76,7 @@ class makeSpreadsheet:
         # ---------------------------------------------------------------------------
 
         self.sheet.recompute()
-        App.ActiveDocument.recompute()
+        self.doc.recompute()
         
 
 
