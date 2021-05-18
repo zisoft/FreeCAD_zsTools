@@ -28,19 +28,16 @@ import os
 import zsToolsLib
 
 global zsTools_icon
-zsToolspath = os.path.dirname( zsToolsLib.__file__ )
-zsTools_icon = os.path.join( zsToolspath , 'Resources/icons/FreeCAD.svg' )
+zsTools_path = os.path.dirname( zsToolsLib.__file__ )
+zsTools_icon = os.path.join( zsTools_path , 'Resources/icons/zsToolsWorkbench.svg' )
 
 
-"""
-    Initialize the workbench
-"""
+""" Initialize the workbench """
 class zsToolsWorkbench(Workbench):
 
-    global zsTools_icon
     MenuText = "zsTools"
-    ToolTip = "zsTools workbench"
-    Icon = zsTools_icon
+    ToolTip  = "zsTools workbench"
+    Icon     = zsTools_icon
 
     def __init__(self):
         "This function is executed when FreeCAD starts"
@@ -82,9 +79,7 @@ class zsToolsWorkbench(Workbench):
 
 
 
-    """
-        zsTools Menu & Toolbar
-    """
+    """ zsTools Menu & Toolbar """
     def zsToolsMenuItems(self):
         commandList = [ 
             "zsTools_partInfo",
@@ -102,9 +97,7 @@ class zsToolsWorkbench(Workbench):
 
 
     
-"""
-    make the workbench
-"""
+""" make the workbench """
 wb = zsToolsWorkbench()
 Gui.addWorkbench(wb)
 

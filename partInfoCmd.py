@@ -25,24 +25,19 @@
 
 import os
 
-from PySide import QtGui, QtCore
 import FreeCADGui as Gui
-import FreeCAD as App
-from FreeCAD import Console as FCC
-import Spreadsheet
 
 import zsToolsLib as zsToolsLib
 
 
 class partInfo:
-    def __init__(self):
-        super(partInfo,self).__init__()
 
     def GetResources(self):
-        return {"MenuText": "Create Part Info Attribute Group",
-                "ToolTip": "Create a Part Info Attribute Group",
-                "Pixmap" : os.path.join( zsToolsLib.iconPath , 'PartInfo.svg')
-                }
+        return {
+            "Pixmap" : os.path.join( zsToolsLib.iconPath , 'PartInfo.svg'),
+            "MenuText": "Create Part Info Attribute Group",
+            "ToolTip": "Create a Part Info Attribute Group"
+        }
 
 
     def IsActive(self):
@@ -50,9 +45,6 @@ class partInfo:
 
 
     def Activated(self):
-        # get the current active document to avoid errors if user changes tab
-        self.doc = App.ActiveDocument
-
         for obj in Gui.Selection.getSelection():
             for info in zsToolsLib.partInfo:
                 if not hasattr(obj,info):
