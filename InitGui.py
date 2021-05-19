@@ -64,14 +64,13 @@ class zsToolsWorkbench(Workbench):
 
         import makeSpreadsheetCmd   # creates the parts list spreadsheet
         import partInfoCmd          # creates the partInfo attribute group
+        import exportAllPagesPDF    # exports all TechDraw pages to PDF
 
 
-        # Define Menus
-        # commands to appear in the menu 'zsTools'
+        # Commands to appear in the menu 'zsTools'
         self.appendMenu( "&zsTools", self.zsToolsMenuItems() )
 
-        # Define Toolbars
-        # commands to appear in the toolbar
+        # Commands to appear in the toolbar
         self.appendToolbar( "zsTools", self.zsToolsToolbarItems() )
 
         FreeCAD.Console.PrintMessage(" done.\n")
@@ -82,14 +81,18 @@ class zsToolsWorkbench(Workbench):
     def zsToolsMenuItems(self):
         commandList = [ 
             "zsTools_partInfo",
-            "zsTools_makeSpreadsheet"
+            "zsTools_makeSpreadsheet",
+            "Separator",
+            "zsTools_exportAllPagesPDF"
         ]
         return commandList
         
     def zsToolsToolbarItems(self):
         commandList = [ 
             "zsTools_partInfo",
-            "zsTools_makeSpreadsheet"
+            "zsTools_makeSpreadsheet",
+            "Separator",
+            "zsTools_exportAllPagesPDF"
         ]
         return commandList
 

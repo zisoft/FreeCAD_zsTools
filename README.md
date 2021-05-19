@@ -40,5 +40,12 @@ The spreadsheet contains the following columns:
 - Length
 - Height
 
+### TechDraw: Export all pages to PDF
+<img src="./Resources/icons/ExportAllPagesPDF.svg" width="32" height="32">
+Export all TechDraw pages to PDF.
+
+The files will be created in the current document directory.  
+
+
 
 (will be continued...)
