@@ -49,13 +49,13 @@ class PartListSpreadsheet:
 
 
     def Activated(self):
-        # get the current active document to avoid errors if user changes tab
+        # Get the current active document to avoid errors if user changes tab
         self.doc = App.ActiveDocument
 
         self.objectList = Counter()
 
         for obj in Gui.Selection.getSelection():
-            self.processParts(obj)
+            self._process_parts(obj)
 
         # ---------------------------------------------------------------------------
         # Create the Spreadsheet
@@ -70,7 +70,7 @@ class PartListSpreadsheet:
         self.sheet.set('G1', 'Width')
         self.sheet.set('H1', 'Height')
 
-        # bold font for headerline
+        # Bold font for headerline
         self.sheet.setStyle('A1:H1', 'bold', 'add')
 
         rowNum = 1
@@ -88,7 +88,7 @@ class PartListSpreadsheet:
             if hasattr(obj,'Description') and obj.getGroupOfProperty('Description') == 'PartInfo':
                 self.sheet.set('E' + sRowNum, obj.getPropertyByName('Description'))
                 
-            # dimensions
+            # Dimensions
             if hasattr(obj,'Shape') and obj.Shape.BoundBox.isValid():
                 bb = obj.Shape.BoundBox
                 if abs(max(bb.XLength,bb.YLength,bb.ZLength)) < 1e+10:
@@ -111,24 +111,24 @@ class PartListSpreadsheet:
         self.doc.recompute()
         
 
-    ''' recursively process the tree '''
-    def processParts( self, obj ):
+    # Recursively process the tree
+    def _process_parts( self, obj ):
 
-        # if its a container, recursively add the subojects
+        # If its a container, recursively add the subojects
         if obj.TypeId=='App::Part':
             self.objectList[obj.Name] += 1
             for objname in obj.getSubObjects():
                 subobj = obj.Document.getObject( objname[0:-1] )
-                self.processParts( subobj )
+                self._process_parts( subobj )
 
-        # if its a link, look for the linked object
+        # If its a link, look for the linked object
         elif obj.TypeId=='App::Link':
-            self.processParts(obj.LinkedObject)
+            self._process_parts(obj.LinkedObject)
 
         elif obj.TypeId=='PartDesign::Body':
             self.objectList[obj.Name] += 1
         
-        # everything else except datum objects
+        # Everything else except datum objects
         elif obj.TypeId not in zsToolsLib.datumTypes:
             self.objectList[obj.Name] += 1
 
@@ -136,5 +136,5 @@ class PartListSpreadsheet:
 
 
 
-# add the command to the workbench
+# Add the command to the workbench
 Gui.addCommand( 'zsTools_makeSpreadsheet', PartListSpreadsheet() )
