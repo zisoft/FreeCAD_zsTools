@@ -70,6 +70,7 @@ class makeSpreadsheet:
         self.sheet.set('G1', 'Width')
         self.sheet.set('H1', 'Height')
 
+        # bold font for headerline
         self.sheet.setStyle('A1:H1', 'bold', 'add')
 
         rowNum = 1
@@ -78,7 +79,7 @@ class makeSpreadsheet:
 
             sRowNum = str(rowNum+1)
             self.sheet.set('A' + sRowNum, str(rowNum))
-            self.sheet.set('B' + sRowNum, str(self.objectList[name]))
+            self.sheet.set('B' + sRowNum, str(self.objectList[name]))   # count
             self.sheet.set('C' + sRowNum, obj.Label)
 
             if hasattr(obj,'Material') and obj.getGroupOfProperty('Material') == 'PartInfo':
@@ -87,18 +88,19 @@ class makeSpreadsheet:
             if hasattr(obj,'Description') and obj.getGroupOfProperty('Description') == 'PartInfo':
                 self.sheet.set('E' + sRowNum, obj.getPropertyByName('Description'))
                 
+            # dimensions
             if hasattr(obj,'Shape') and obj.Shape.BoundBox.isValid():
                 bb = obj.Shape.BoundBox
                 if abs(max(bb.XLength,bb.YLength,bb.ZLength)) < 1e+10:
                     Xsize = str(int((bb.XLength * 10)+0.099)/10)
                     Ysize = str(int((bb.YLength * 10)+0.099)/10)
                     Zsize = str(int((bb.ZLength * 10)+0.099)/10)
-            self.sheet.set('F' + sRowNum, str(Xsize))
-            self.sheet.set('G' + sRowNum, str(Ysize))
-            self.sheet.set('H' + sRowNum, str(Zsize))
+
+                self.sheet.set('F' + sRowNum, str(Xsize))
+                self.sheet.set('G' + sRowNum, str(Ysize))
+                self.sheet.set('H' + sRowNum, str(Zsize))
 
                 
-
             rowNum += 1
 
         # Center columns A and B
@@ -109,7 +111,7 @@ class makeSpreadsheet:
         self.doc.recompute()
         
 
-
+    ''' recursively process the tree '''
     def processParts( self, obj ):
 
         # recursively add the subojects
