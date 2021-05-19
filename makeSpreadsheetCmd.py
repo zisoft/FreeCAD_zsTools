@@ -34,7 +34,7 @@ import zsToolsLib
 from collections import Counter
 
 
-class makeSpreadsheet:
+class PartListSpreadsheet:
 
     def GetResources(self):
         return {
@@ -114,7 +114,7 @@ class makeSpreadsheet:
     ''' recursively process the tree '''
     def processParts( self, obj ):
 
-        # recursively add the subojects
+        # if its a container, recursively add the subojects
         if obj.TypeId=='App::Part':
             self.objectList[obj.Name] += 1
             for objname in obj.getSubObjects():
@@ -137,4 +137,4 @@ class makeSpreadsheet:
 
 
 # add the command to the workbench
-Gui.addCommand( 'zsTools_makeSpreadsheet', makeSpreadsheet() )
+Gui.addCommand( 'zsTools_makeSpreadsheet', PartListSpreadsheet() )

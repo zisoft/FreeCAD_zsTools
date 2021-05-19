@@ -30,7 +30,7 @@ import FreeCADGui as Gui
 import zsToolsLib as zsToolsLib
 
 
-class partInfo:
+class PartInfo:
 
     def GetResources(self):
         return {
@@ -52,4 +52,4 @@ class partInfo:
 
 
 # add the command to the workbench
-Gui.addCommand( 'zsTools_partInfo', partInfo() )
+Gui.addCommand( 'zsTools_partInfo', PartInfo() )
