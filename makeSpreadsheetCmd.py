@@ -38,8 +38,8 @@ class PartListSpreadsheet:
     def GetResources(self):
         return {
             "Pixmap" : os.path.join( zsToolsLib.iconPath , 'PartsList.svg'),
-            "MenuText": "Create Part List Spreadsheet",
-            "ToolTip": "Create a Part List Spreadsheet from the selected objects"
+            "MenuText": "Create Parts List Spreadsheet",
+            "ToolTip": "Create a Parts List Spreadsheet from the selected objects"
         }
 
 
