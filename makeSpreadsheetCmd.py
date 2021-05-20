@@ -24,8 +24,8 @@
 
 import os
 
-import FreeCADGui as Gui
 import FreeCAD as App
+import FreeCADGui as Gui
 import Spreadsheet
 
 import zsToolsLib

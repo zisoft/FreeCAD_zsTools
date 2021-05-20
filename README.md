@@ -14,6 +14,7 @@ Navigate to this folder, open the `/Mod` folder there and put the repo folder in
 ## Utilities
 This workbench provides the following functions/utilities:
 
+
 ### PartInfo
 <img src="./Resources/icons/PartInfo.svg" width="32" height="32">
 Create PartInfo Attributes
@@ -22,6 +23,7 @@ This adds a new property group "PartInfo" to the selected object(s) where you ca
 
 - Material
 - Description
+
 
 ### Parts Lists
 <img src="./Resources/icons/PartsList.svg" width="32" height="32">
@@ -40,12 +42,19 @@ The spreadsheet contains the following columns:
 - Length
 - Height
 
+
 ### TechDraw: Export all pages to PDF
 <img src="./Resources/icons/ExportAllPagesPDF.svg" width="32" height="32">
 Export all TechDraw pages to PDF.
 
 The files will be created in the current document directory.  
 
+
+### TechDraw: Copy Editable Fields
+<img src="./Resources/icons/CopyFields.svg" width="32" height="32">
+Copy editable fields to subsequent pages.
+
+The content of the editable fields are copied from the first page to subsequent pages.
 
 
 (will be continued...)

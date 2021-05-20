@@ -62,9 +62,10 @@ class zsToolsWorkbench(Workbench):
         FreeCAD.Console.PrintMessage("zsTools WorkBench initializing...")
         FreeCADGui.updateGui()
 
-        import makeSpreadsheetCmd   # creates the parts list spreadsheet
-        import partInfoCmd          # creates the partInfo attribute group
-        import exportAllPagesPDF    # exports all TechDraw pages to PDF
+        import makeSpreadsheetCmd      # creates the parts list spreadsheet
+        import partInfoCmd             # creates the partInfo attribute group
+        import exportAllPagesPDFCmd    # exports all TechDraw pages to PDF
+        import copyEditableFieldsCmd   # copy editable fields to subsequent pages
 
 
         # Commands to appear in the menu 'zsTools'
@@ -83,7 +84,8 @@ class zsToolsWorkbench(Workbench):
             "zsTools_partInfo",
             "zsTools_makeSpreadsheet",
             "Separator",
-            "zsTools_exportAllPagesPDF"
+            "zsTools_exportAllPagesPDF",
+            "zsTools_copyEditableFields"
         ]
         return commandList
         
@@ -92,11 +94,10 @@ class zsToolsWorkbench(Workbench):
             "zsTools_partInfo",
             "zsTools_makeSpreadsheet",
             "Separator",
-            "zsTools_exportAllPagesPDF"
+            "zsTools_exportAllPagesPDF",
+            "zsTools_copyEditableFields"
         ]
         return commandList
-
-
 
     
 """ make the workbench """
