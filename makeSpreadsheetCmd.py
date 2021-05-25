@@ -90,6 +90,9 @@ class PartListSpreadsheet:
             # Dimensions
             if hasattr(obj,'Shape') and obj.Shape.BoundBox.isValid():
                 bb = obj.Shape.BoundBox
+                Xsize = str(bb.XLength)
+                Ysize = str(bb.YLength)
+                Zsize = str(bb.ZLength)
                 if abs(max(bb.XLength,bb.YLength,bb.ZLength)) < 1e+10:
                     Xsize = str(int((bb.XLength * 10)+0.099)/10)
                     Ysize = str(int((bb.YLength * 10)+0.099)/10)
