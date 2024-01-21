@@ -3,7 +3,7 @@
 #  makeSpreadsheetCmd.py
 #  
 #  FreeCAD zsTools Workbench
-#  Copyright (C) 2021 Mario Zimmermann
+#  Copyright (C) 2024 Mario Zimmermann
 #
 #  This library is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU Lesser General Public
@@ -72,13 +72,14 @@ class PartListSpreadsheet:
         # Bold font for headerline
         self.sheet.setStyle('A1:H1', 'bold', 'add')
 
-        rowNum = 1
-        for name in self.objectList:
-            obj = self.doc.getObject(name)
+        # Dimension columns right aligned
+        self.sheet.setAlignment('F1:H1', 'right', 'keep')
 
+        rowNum = 1
+        for obj in self.objectList:
             sRowNum = str(rowNum+1)
             self.sheet.set('A' + sRowNum, str(rowNum))
-            self.sheet.set('B' + sRowNum, str(self.objectList[name]))   # count
+            self.sheet.set('B' + sRowNum, str(self.objectList[obj]))   # count
             self.sheet.set('C' + sRowNum, obj.Label)
 
             if hasattr(obj,'Material') and obj.getGroupOfProperty('Material') == 'PartInfo':
@@ -115,10 +116,8 @@ class PartListSpreadsheet:
 
     # Recursively process the tree
     def _process_parts( self, obj ):
-
         # If its a container, recursively add the subojects
         if obj.TypeId=='App::Part':
-            self.objectList[obj.Name] += 1
             for objname in obj.getSubObjects():
                 subobj = obj.Document.getObject( objname[0:-1] )
                 self._process_parts( subobj )
@@ -128,11 +127,11 @@ class PartListSpreadsheet:
             self._process_parts(obj.LinkedObject)
 
         elif obj.TypeId=='PartDesign::Body':
-            self.objectList[obj.Name] += 1
+            self.objectList[obj] += 1
         
         # Everything else except datum objects
-        elif obj.TypeId not in zsToolsLib.datumTypes:
-            self.objectList[obj.Name] += 1
+        #elif obj.TypeId not in zsToolsLib.datumTypes:
+        #    self.objectList[obj.Name] += 1
 
         return
 

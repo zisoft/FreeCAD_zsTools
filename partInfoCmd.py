@@ -3,7 +3,7 @@
 #  partInfoCmd.py
 #  
 #  FreeCAD zsTools Workbench
-#  Copyright (C) 2021 Mario Zimmermann
+#  Copyright (C) 2024 Mario Zimmermann
 #
 #  This library is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU Lesser General Public
